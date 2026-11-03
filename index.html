@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f7f7f4">
+<meta name="description" content="A practical Turkish–English mini dictionary with 50 high-frequency everyday words and expressions.">
+<title>Turkish 50 — Everyday Dictionary</title>
+<style>
+:root{color-scheme:light;--bg:#f7f7f4;--paper:#fff;--ink:#171916;--muted:#73786f;--line:#e5e7df;--accent:#176b50;--soft:#eaf3ee;--shadow:0 12px 34px #17231a0a}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}a{color:inherit}.wrap{width:min(960px,calc(100% - 40px));margin:auto}.top{padding:26px 0;border-bottom:1px solid var(--line)}.brand{font-size:14px;font-weight:750;letter-spacing:.09em;text-transform:uppercase}.brand span{color:var(--accent)}.hero{padding:70px 0 38px}.eyebrow{color:var(--accent);font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}.hero h1{font-size:clamp(42px,8vw,76px);line-height:.98;letter-spacing:-.065em;margin:16px 0}.hero p{max-width:590px;color:var(--muted);font-size:18px;margin:18px 0 0}.count{display:inline-flex;gap:8px;align-items:center;background:var(--soft);color:var(--accent);padding:8px 12px;border-radius:4px;font-size:13px;font-weight:700;margin-top:24px}.tools{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0 14px}.search{flex:1 1 260px;min-width:0;background:var(--paper);border:1px solid var(--line);padding:14px 15px;font:inherit;border-radius:5px;outline:none}.search:focus{border-color:var(--accent);box-shadow:0 0 0 3px #176b5018}.filter{background:var(--paper);border:1px solid var(--line);padding:0 13px;border-radius:5px;font:inherit;color:var(--ink)}.hint{font-size:13px;color:var(--muted);margin:0 0 18px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding-bottom:70px}.entry{background:var(--paper);border:1px solid var(--line);padding:18px 19px;border-radius:5px;box-shadow:var(--shadow);display:grid;grid-template-columns:38px 1fr auto;gap:13px;align-items:start}.num{font-size:12px;color:#9a9f96;font-variant-numeric:tabular-nums;padding-top:5px}.word{font-size:23px;font-weight:750;letter-spacing:-.04em;line-height:1.15}.meaning{font-size:15px;margin-top:5px;color:#50564e}.example{font-size:13px;color:var(--muted);margin-top:9px}.tag{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);background:var(--soft);padding:4px 6px;border-radius:3px;font-weight:800}.empty{grid-column:1/-1;padding:35px;text-align:center;color:var(--muted);background:var(--paper);border:1px solid var(--line)}footer{border-top:1px solid var(--line);padding:22px 0 35px;color:var(--muted);font-size:13px}footer a{color:var(--accent);text-decoration:none}.note{max-width:700px;margin:0 0 22px;color:var(--muted);font-size:13px}
+@media(max-width:620px){.hero{padding-top:48px}.grid{grid-template-columns:1fr}.entry{padding:16px}.hero p{font-size:16px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap brand">TR<span>/</span>EN <span>·</span> WORDS THAT MATTER</div></header>
+<main class="wrap">
+<section class="hero">
+<div class="eyebrow">A small, useful starter dictionary</div>
+<h1>Turkish,<br>everyday.</h1>
+<p>50 common Turkish words and expressions, with clear English meanings and simple examples. Start with the words you’ll actually meet in daily conversation.</p>
+<div class="count"><strong>50</strong> carefully selected entries <span>·</span> Turkish ↔ English search</div>
+</section>
+<section aria-label="Dictionary">
+<div class="tools">
+<input class="search" id="search" type="search" placeholder="Search Turkish or English…" autocomplete="off" aria-label="Search dictionary">
+<select class="filter" id="filter" aria-label="Filter words"><option value="all">All entries</option><option value="basics">Essentials</option><option value="people">People & things</option><option value="actions">Actions</option><option value="time">Time & place</option><option value="conversation">Conversation</option></select>
+</div>
+<p class="hint" id="status" aria-live="polite">Showing all 50 entries · Search works in both languages.</p>
+<p class="note">The selection combines very frequent Turkish function words with practical everyday vocabulary. It is a learner-focused core list, not a claimed corpus ranking.</p>
+<div class="grid" id="entries"></div>
+</section>
+</main>
+<footer><div class="wrap">Made for learners · <a href="https://github.com/zxzchocolate/competition-meb-tr-dictionary">Open source on GitHub</a></div></footer>
+<script>
+const words=[
+["ve","and","Ece ve Ali.","basics"],["bir","a / one","Bir gün.","basics"],["bu","this","Bu güzel.","basics"],["şu","that (there)","Şu ne?","basics"],["o","he / she / it; that","O burada.","basics"],["ben","I / me","Ben hazırım.","basics"],["sen","you (singular)","Sen nasılsın?","basics"],["biz","we / us","Biz arkadaşız.","basics"],["siz","you (plural / polite)","Siz nasılsınız?","basics"],["onlar","they / them","Onlar geldi.","basics"],
+["çok","very / much / many","Çok iyi.","basics"],["daha","more / still","Biraz daha.","basics"],["ne","what","Bu ne?","basics"],["için","for","Senin için.","basics"],["ile","with","Benimle gel.","basics"],["de / da","also / too; in / at (suffix)","Ben de geliyorum.","basics"],["var","there is / have","Su var mı?","basics"],["yok","there isn't / don't have","Sorun yok.","basics"],["gibi","like / as","Senin gibi.","basics"],["ama","but","Güzel ama pahalı.","basics"],
+["insan","person / human","İyi bir insan.","people"],["şey","thing","Bir şey değil.","people"],["ev","house / home","Eve gidiyorum.","people"],["su","water","Bir su lütfen.","people"],["yemek","food / meal; to eat","Yemek hazır.","people"],["gün","day","İyi günler.","time"],["zaman","time","Zaman yok.","time"],["şimdi","now","Şimdi geliyorum.","time"],["sonra","later / after","Sonra görüşürüz.","time"],["önce","before / earlier","Bundan önce.","time"],
+["burada","here","Burada bekle.","time"],["orada","there","Orada buluşalım.","time"],["iyi","good / well","İyiyim, teşekkürler.","basics"],["güzel","beautiful / nice","Çok güzel.","basics"],["büyük","big / large","Büyük ev.","basics"],["küçük","small / little","Küçük bir kedi.","basics"],
+["olmak","to be / become","Mutlu olmak.","actions"],["yapmak","to do / make","Ne yapıyorsun?","actions"],["gelmek","to come","Buraya gel.","actions"],["gitmek","to go","Eve git.","actions"],["istemek","to want","Su istiyorum.","actions"],["bilmek","to know","Bilmiyorum.","actions"],["görmek","to see","Seni görmek güzel.","actions"],["almak","to take / buy","Bunu al.","actions"],
+["merhaba","hello","Merhaba, nasılsın?","conversation"],["evet","yes","Evet, tamam.","conversation"],["hayır","no","Hayır, teşekkürler.","conversation"],["lütfen","please","Bir kahve, lütfen.","conversation"],["teşekkürler","thanks / thank you","Çok teşekkürler.","conversation"],["nasıl","how","Nasıl gidiyor?","conversation"]
+];
+const root=document.getElementById('entries'),search=document.getElementById('search'),filter=document.getElementById('filter'),status=document.getElementById('status');
+function render(){const q=search.value.trim().toLocaleLowerCase('tr-TR'),cat=filter.value;const found=words.filter(w=>(cat==='all'||w[3]===cat)&&w.slice(0,3).join(' ').toLocaleLowerCase('tr-TR').includes(q));root.innerHTML=found.length?found.map(w=>{const i=words.indexOf(w)+1;return '<article class="entry"><div class="num">'+String(i).padStart(2,'0')+'</div><div><div class="word" lang="tr">'+w[0]+'</div><div class="meaning">'+w[1]+'</div><div class="example" lang="tr">'+w[2]+'</div></div><span class="tag">'+w[3]+'</span></article>'}).join(''):'<div class="empty">No matches. Try another word.</div>';status.textContent='Showing '+found.length+' of 50 entries · Search works in both languages.'}
+search.addEventListener('input',render);filter.addEventListener('change',render);render();
+</script>
+</body>
+</html>
