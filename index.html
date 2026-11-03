@@ -1,49 +1,76 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#f7f7f4">
-<meta name="description" content="A practical Turkish–English mini dictionary with 50 high-frequency everyday words and expressions.">
-<title>Turkish 50 — Everyday Dictionary</title>
-<style>
-:root{color-scheme:light;--bg:#f7f7f4;--paper:#fff;--ink:#171916;--muted:#73786f;--line:#e5e7df;--accent:#176b50;--soft:#eaf3ee;--shadow:0 12px 34px #17231a0a}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}a{color:inherit}.wrap{width:min(960px,calc(100% - 40px));margin:auto}.top{padding:26px 0;border-bottom:1px solid var(--line)}.brand{font-size:14px;font-weight:750;letter-spacing:.09em;text-transform:uppercase}.brand span{color:var(--accent)}.hero{padding:70px 0 38px}.eyebrow{color:var(--accent);font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}.hero h1{font-size:clamp(42px,8vw,76px);line-height:.98;letter-spacing:-.065em;margin:16px 0}.hero p{max-width:590px;color:var(--muted);font-size:18px;margin:18px 0 0}.count{display:inline-flex;gap:8px;align-items:center;background:var(--soft);color:var(--accent);padding:8px 12px;border-radius:4px;font-size:13px;font-weight:700;margin-top:24px}.tools{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0 14px}.search{flex:1 1 260px;min-width:0;background:var(--paper);border:1px solid var(--line);padding:14px 15px;font:inherit;border-radius:5px;outline:none}.search:focus{border-color:var(--accent);box-shadow:0 0 0 3px #176b5018}.filter{background:var(--paper);border:1px solid var(--line);padding:0 13px;border-radius:5px;font:inherit;color:var(--ink)}.hint{font-size:13px;color:var(--muted);margin:0 0 18px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding-bottom:70px}.entry{background:var(--paper);border:1px solid var(--line);padding:18px 19px;border-radius:5px;box-shadow:var(--shadow);display:grid;grid-template-columns:38px 1fr auto;gap:13px;align-items:start}.num{font-size:12px;color:#9a9f96;font-variant-numeric:tabular-nums;padding-top:5px}.word{font-size:23px;font-weight:750;letter-spacing:-.04em;line-height:1.15}.meaning{font-size:15px;margin-top:5px;color:#50564e}.example{font-size:13px;color:var(--muted);margin-top:9px}.tag{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);background:var(--soft);padding:4px 6px;border-radius:3px;font-weight:800}.empty{grid-column:1/-1;padding:35px;text-align:center;color:var(--muted);background:var(--paper);border:1px solid var(--line)}footer{border-top:1px solid var(--line);padding:22px 0 35px;color:var(--muted);font-size:13px}footer a{color:var(--accent);text-decoration:none}.note{max-width:700px;margin:0 0 22px;color:var(--muted);font-size:13px}
-@media(max-width:620px){.hero{padding-top:48px}.grid{grid-template-columns:1fr}.entry{padding:16px}.hero p{font-size:16px}}
-</style>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="A practical Turkish-English dictionary with 50 everyday words, each on its own page.">
+<title>Turkish Words — A small dictionary</title><link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header class="top"><div class="wrap brand">TR<span>/</span>EN <span>·</span> WORDS THAT MATTER</div></header>
+<header class="mast"><div class="wrap"><a class="brand" href="./">TR<span>/</span>EN DICTIONARY</a></div></header>
 <main class="wrap">
-<section class="hero">
-<div class="eyebrow">A small, useful starter dictionary</div>
-<h1>Turkish,<br>everyday.</h1>
-<p>50 common Turkish words and expressions, with clear English meanings and simple examples. Start with the words you’ll actually meet in daily conversation.</p>
-<div class="count"><strong>50</strong> carefully selected entries <span>·</span> Turkish ↔ English search</div>
-</section>
-<section aria-label="Dictionary">
-<div class="tools">
-<input class="search" id="search" type="search" placeholder="Search Turkish or English…" autocomplete="off" aria-label="Search dictionary">
-<select class="filter" id="filter" aria-label="Filter words"><option value="all">All entries</option><option value="basics">Essentials</option><option value="people">People & things</option><option value="actions">Actions</option><option value="time">Time & place</option><option value="conversation">Conversation</option></select>
-</div>
-<p class="hint" id="status" aria-live="polite">Showing all 50 entries · Search works in both languages.</p>
-<p class="note">The selection combines very frequent Turkish function words with practical everyday vocabulary. It is a learner-focused core list, not a claimed corpus ranking.</p>
-<div class="grid" id="entries"></div>
-</section>
+<div class="eyebrow">Turkish · English · 50 entries</div>
+<h1>Words for<br>everyday Turkish.</h1>
+<p class="sub">A compact reference for useful, common words.</p>
+<input class="search" id="search" type="search" placeholder="Search in Turkish or English…" autocomplete="off" aria-label="Search words">
+<p class="meta" id="count" aria-live="polite">50 words</p>
+<nav class="list" id="words" aria-label="Dictionary words">
+<a class="item" href="words/ve.html"><span class="num">01</span><span><span class="term" lang="tr">ve</span><br><span class="meaning">and</span></span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="item" href="words/bir.html"><span class="num">02</span><span><span class="term" lang="tr">bir</span><br><span class="meaning">a / one</span></span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="item" href="words/bu.html"><span class="num">03</span><span><span class="term" lang="tr">bu</span><br><span class="meaning">this</span></span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="item" href="words/su.html"><span class="num">04</span><span><span class="term" lang="tr">şu</span><br><span class="meaning">that (there)</span></span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="item" href="words/o.html"><span class="num">05</span><span><span class="term" lang="tr">o</span><br><span class="meaning">he / she / it; that</span></span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="item" href="words/ben.html"><span class="num">06</span><span><span class="term" lang="tr">ben</span><br><span class="meaning">I / me</span></span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="item" href="words/sen.html"><span class="num">07</span><span><span class="term" lang="tr">sen</span><br><span class="meaning">you (singular)</span></span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="item" href="words/biz.html"><span class="num">08</span><span><span class="term" lang="tr">biz</span><br><span class="meaning">we / us</span></span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="item" href="words/siz.html"><span class="num">09</span><span><span class="term" lang="tr">siz</span><br><span class="meaning">you (plural / polite)</span></span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="item" href="words/onlar.html"><span class="num">10</span><span><span class="term" lang="tr">onlar</span><br><span class="meaning">they / them</span></span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="item" href="words/cok.html"><span class="num">11</span><span><span class="term" lang="tr">çok</span><br><span class="meaning">very / much / many</span></span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="item" href="words/daha.html"><span class="num">12</span><span><span class="term" lang="tr">daha</span><br><span class="meaning">more / still</span></span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="item" href="words/ne.html"><span class="num">13</span><span><span class="term" lang="tr">ne</span><br><span class="meaning">what</span></span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="item" href="words/icin.html"><span class="num">14</span><span><span class="term" lang="tr">için</span><br><span class="meaning">for</span></span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="item" href="words/ile.html"><span class="num">15</span><span><span class="term" lang="tr">ile</span><br><span class="meaning">with</span></span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="item" href="words/de-da.html"><span class="num">16</span><span><span class="term" lang="tr">de / da</span><br><span class="meaning">also / too; in / at (suffix)</span></span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="item" href="words/var.html"><span class="num">17</span><span><span class="term" lang="tr">var</span><br><span class="meaning">there is / have</span></span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="item" href="words/yok.html"><span class="num">18</span><span><span class="term" lang="tr">yok</span><br><span class="meaning">there isn't / don't have</span></span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="item" href="words/gibi.html"><span class="num">19</span><span><span class="term" lang="tr">gibi</span><br><span class="meaning">like / as</span></span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="item" href="words/ama.html"><span class="num">20</span><span><span class="term" lang="tr">ama</span><br><span class="meaning">but</span></span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="item" href="words/insan.html"><span class="num">21</span><span><span class="term" lang="tr">insan</span><br><span class="meaning">person / human</span></span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="item" href="words/sey.html"><span class="num">22</span><span><span class="term" lang="tr">şey</span><br><span class="meaning">thing</span></span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="item" href="words/ev.html"><span class="num">23</span><span><span class="term" lang="tr">ev</span><br><span class="meaning">house / home</span></span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="item" href="words/su.html"><span class="num">24</span><span><span class="term" lang="tr">su</span><br><span class="meaning">water</span></span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="item" href="words/yemek.html"><span class="num">25</span><span><span class="term" lang="tr">yemek</span><br><span class="meaning">food / meal; to eat</span></span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="item" href="words/gun.html"><span class="num">26</span><span><span class="term" lang="tr">gün</span><br><span class="meaning">day</span></span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="item" href="words/zaman.html"><span class="num">27</span><span><span class="term" lang="tr">zaman</span><br><span class="meaning">time</span></span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="item" href="words/simdi.html"><span class="num">28</span><span><span class="term" lang="tr">şimdi</span><br><span class="meaning">now</span></span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="item" href="words/sonra.html"><span class="num">29</span><span><span class="term" lang="tr">sonra</span><br><span class="meaning">later / after</span></span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="item" href="words/once.html"><span class="num">30</span><span><span class="term" lang="tr">önce</span><br><span class="meaning">before / earlier</span></span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="item" href="words/burada.html"><span class="num">31</span><span><span class="term" lang="tr">burada</span><br><span class="meaning">here</span></span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="item" href="words/orada.html"><span class="num">32</span><span><span class="term" lang="tr">orada</span><br><span class="meaning">there</span></span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="item" href="words/iyi.html"><span class="num">33</span><span><span class="term" lang="tr">iyi</span><br><span class="meaning">good / well</span></span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="item" href="words/guzel.html"><span class="num">34</span><span><span class="term" lang="tr">güzel</span><br><span class="meaning">beautiful / nice</span></span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="item" href="words/buyuk.html"><span class="num">35</span><span><span class="term" lang="tr">büyük</span><br><span class="meaning">big / large</span></span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="item" href="words/kucuk.html"><span class="num">36</span><span><span class="term" lang="tr">küçük</span><br><span class="meaning">small / little</span></span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="item" href="words/olmak.html"><span class="num">37</span><span><span class="term" lang="tr">olmak</span><br><span class="meaning">to be / become</span></span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="item" href="words/yapmak.html"><span class="num">38</span><span><span class="term" lang="tr">yapmak</span><br><span class="meaning">to do / make</span></span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="item" href="words/gelmek.html"><span class="num">39</span><span><span class="term" lang="tr">gelmek</span><br><span class="meaning">to come</span></span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="item" href="words/gitmek.html"><span class="num">40</span><span><span class="term" lang="tr">gitmek</span><br><span class="meaning">to go</span></span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="item" href="words/istemek.html"><span class="num">41</span><span><span class="term" lang="tr">istemek</span><br><span class="meaning">to want</span></span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="item" href="words/bilmek.html"><span class="num">42</span><span><span class="term" lang="tr">bilmek</span><br><span class="meaning">to know</span></span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="item" href="words/gormek.html"><span class="num">43</span><span><span class="term" lang="tr">görmek</span><br><span class="meaning">to see</span></span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="item" href="words/almak.html"><span class="num">44</span><span><span class="term" lang="tr">almak</span><br><span class="meaning">to take / buy</span></span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="item" href="words/merhaba.html"><span class="num">45</span><span><span class="term" lang="tr">merhaba</span><br><span class="meaning">hello</span></span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="item" href="words/evet.html"><span class="num">46</span><span><span class="term" lang="tr">evet</span><br><span class="meaning">yes</span></span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="item" href="words/hayir.html"><span class="num">47</span><span><span class="term" lang="tr">hayır</span><br><span class="meaning">no</span></span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="item" href="words/lutfen.html"><span class="num">48</span><span><span class="term" lang="tr">lütfen</span><br><span class="meaning">please</span></span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="item" href="words/tesekkurler.html"><span class="num">49</span><span><span class="term" lang="tr">teşekkürler</span><br><span class="meaning">thanks / thank you</span></span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="item" href="words/nasil.html"><span class="num">50</span><span><span class="term" lang="tr">nasıl</span><br><span class="meaning">how</span></span><span class="arrow" aria-hidden="true">↗</span></a>
+</nav>
 </main>
-<footer><div class="wrap">Made for learners · <a href="https://github.com/zxzchocolate/competition-meb-tr-dictionary">Open source on GitHub</a></div></footer>
+<footer><div class="wrap">A practical learner’s list. Not a statistically ranked corpus.</div></footer>
 <script>
-const words=[
-["ve","and","Ece ve Ali.","basics"],["bir","a / one","Bir gün.","basics"],["bu","this","Bu güzel.","basics"],["şu","that (there)","Şu ne?","basics"],["o","he / she / it; that","O burada.","basics"],["ben","I / me","Ben hazırım.","basics"],["sen","you (singular)","Sen nasılsın?","basics"],["biz","we / us","Biz arkadaşız.","basics"],["siz","you (plural / polite)","Siz nasılsınız?","basics"],["onlar","they / them","Onlar geldi.","basics"],
-["çok","very / much / many","Çok iyi.","basics"],["daha","more / still","Biraz daha.","basics"],["ne","what","Bu ne?","basics"],["için","for","Senin için.","basics"],["ile","with","Benimle gel.","basics"],["de / da","also / too; in / at (suffix)","Ben de geliyorum.","basics"],["var","there is / have","Su var mı?","basics"],["yok","there isn't / don't have","Sorun yok.","basics"],["gibi","like / as","Senin gibi.","basics"],["ama","but","Güzel ama pahalı.","basics"],
-["insan","person / human","İyi bir insan.","people"],["şey","thing","Bir şey değil.","people"],["ev","house / home","Eve gidiyorum.","people"],["su","water","Bir su lütfen.","people"],["yemek","food / meal; to eat","Yemek hazır.","people"],["gün","day","İyi günler.","time"],["zaman","time","Zaman yok.","time"],["şimdi","now","Şimdi geliyorum.","time"],["sonra","later / after","Sonra görüşürüz.","time"],["önce","before / earlier","Bundan önce.","time"],
-["burada","here","Burada bekle.","time"],["orada","there","Orada buluşalım.","time"],["iyi","good / well","İyiyim, teşekkürler.","basics"],["güzel","beautiful / nice","Çok güzel.","basics"],["büyük","big / large","Büyük ev.","basics"],["küçük","small / little","Küçük bir kedi.","basics"],
-["olmak","to be / become","Mutlu olmak.","actions"],["yapmak","to do / make","Ne yapıyorsun?","actions"],["gelmek","to come","Buraya gel.","actions"],["gitmek","to go","Eve git.","actions"],["istemek","to want","Su istiyorum.","actions"],["bilmek","to know","Bilmiyorum.","actions"],["görmek","to see","Seni görmek güzel.","actions"],["almak","to take / buy","Bunu al.","actions"],
-["merhaba","hello","Merhaba, nasılsın?","conversation"],["evet","yes","Evet, tamam.","conversation"],["hayır","no","Hayır, teşekkürler.","conversation"],["lütfen","please","Bir kahve, lütfen.","conversation"],["teşekkürler","thanks / thank you","Çok teşekkürler.","conversation"],["nasıl","how","Nasıl gidiyor?","conversation"]
-];
-const root=document.getElementById('entries'),search=document.getElementById('search'),filter=document.getElementById('filter'),status=document.getElementById('status');
-function render(){const q=search.value.trim().toLocaleLowerCase('tr-TR'),cat=filter.value;const found=words.filter(w=>(cat==='all'||w[3]===cat)&&w.slice(0,3).join(' ').toLocaleLowerCase('tr-TR').includes(q));root.innerHTML=found.length?found.map(w=>{const i=words.indexOf(w)+1;return '<article class="entry"><div class="num">'+String(i).padStart(2,'0')+'</div><div><div class="word" lang="tr">'+w[0]+'</div><div class="meaning">'+w[1]+'</div><div class="example" lang="tr">'+w[2]+'</div></div><span class="tag">'+w[3]+'</span></article>'}).join(''):'<div class="empty">No matches. Try another word.</div>';status.textContent='Showing '+found.length+' of 50 entries · Search works in both languages.'}
-search.addEventListener('input',render);filter.addEventListener('change',render);render();
+const entries=[{"tr":"ve","en":"and","slug":"ve"},{"tr":"bir","en":"a / one","slug":"bir"},{"tr":"bu","en":"this","slug":"bu"},{"tr":"şu","en":"that (there)","slug":"su"},{"tr":"o","en":"he / she / it; that","slug":"o"},{"tr":"ben","en":"I / me","slug":"ben"},{"tr":"sen","en":"you (singular)","slug":"sen"},{"tr":"biz","en":"we / us","slug":"biz"},{"tr":"siz","en":"you (plural / polite)","slug":"siz"},{"tr":"onlar","en":"they / them","slug":"onlar"},{"tr":"çok","en":"very / much / many","slug":"cok"},{"tr":"daha","en":"more / still","slug":"daha"},{"tr":"ne","en":"what","slug":"ne"},{"tr":"için","en":"for","slug":"icin"},{"tr":"ile","en":"with","slug":"ile"},{"tr":"de / da","en":"also / too; in / at (suffix)","slug":"de-da"},{"tr":"var","en":"there is / have","slug":"var"},{"tr":"yok","en":"there isn't / don't have","slug":"yok"},{"tr":"gibi","en":"like / as","slug":"gibi"},{"tr":"ama","en":"but","slug":"ama"},{"tr":"insan","en":"person / human","slug":"insan"},{"tr":"şey","en":"thing","slug":"sey"},{"tr":"ev","en":"house / home","slug":"ev"},{"tr":"su","en":"water","slug":"su"},{"tr":"yemek","en":"food / meal; to eat","slug":"yemek"},{"tr":"gün","en":"day","slug":"gun"},{"tr":"zaman","en":"time","slug":"zaman"},{"tr":"şimdi","en":"now","slug":"simdi"},{"tr":"sonra","en":"later / after","slug":"sonra"},{"tr":"önce","en":"before / earlier","slug":"once"},{"tr":"burada","en":"here","slug":"burada"},{"tr":"orada","en":"there","slug":"orada"},{"tr":"iyi","en":"good / well","slug":"iyi"},{"tr":"güzel","en":"beautiful / nice","slug":"guzel"},{"tr":"büyük","en":"big / large","slug":"buyuk"},{"tr":"küçük","en":"small / little","slug":"kucuk"},{"tr":"olmak","en":"to be / become","slug":"olmak"},{"tr":"yapmak","en":"to do / make","slug":"yapmak"},{"tr":"gelmek","en":"to come","slug":"gelmek"},{"tr":"gitmek","en":"to go","slug":"gitmek"},{"tr":"istemek","en":"to want","slug":"istemek"},{"tr":"bilmek","en":"to know","slug":"bilmek"},{"tr":"görmek","en":"to see","slug":"gormek"},{"tr":"almak","en":"to take / buy","slug":"almak"},{"tr":"merhaba","en":"hello","slug":"merhaba"},{"tr":"evet","en":"yes","slug":"evet"},{"tr":"hayır","en":"no","slug":"hayir"},{"tr":"lütfen","en":"please","slug":"lutfen"},{"tr":"teşekkürler","en":"thanks / thank you","slug":"tesekkurler"},{"tr":"nasıl","en":"how","slug":"nasil"}];
+const list=document.getElementById('words'),search=document.getElementById('search'),count=document.getElementById('count');
+function filterWords(){const q=search.value.trim().toLocaleLowerCase('tr-TR');const matches=entries.map((w,i)=>({...w,i})).filter(w=>(w.tr+' '+w.en).toLocaleLowerCase('tr-TR').includes(q));list.innerHTML=matches.length?matches.map(w=>'<a class="item" href="words/'+w.slug+'.html"><span class="num">'+String(w.i+1).padStart(2,'0')+'</span><span><span class="term" lang="tr">'+w.tr+'</span><br><span class="meaning">'+w.en+'</span></span><span class="arrow" aria-hidden="true">↗</span></a>').join(''):'<div class="empty">No matching words. Try another search.</div>';count.textContent=matches.length+' of 50 words';}
+search.addEventListener('input',filterWords);
 </script>
-</body>
-</html>
+</body></html>
