@@ -1,20 +1,24 @@
-# Turkish 50 — Everyday Dictionary
+# Turkish 50 — TR / EN Dictionary
 
-A small, static Turkish–English dictionary featuring 50 high-frequency everyday words and useful expressions.
+A 50-entry Turkish–English word list with individual HTML pages.
 
 ## Features
-- Search in Turkish or English
-- Filter by topic
-- Short example phrases
-- Responsive layout; no frameworks, build step, or external API
+- Search the index in Turkish or English.
+- Open a dedicated page for each word.
+- English equivalents are concise learner translations.
+- Turkish definitions and available example sentences load from the official Turkish Language Association (TDK) Güncel Türkçe Sözlük API.
+- Each entry links directly to its TDK source.
+- Responsive editorial layout; plain HTML, CSS and JavaScript.
 
-## Word selection
-This is a practical learner-focused core list: common function words (such as **ve**, **bir**, **bu**, **için**) plus everyday pronouns, verbs, places, and conversational expressions. It is **not** presented as a statistically verified top-50 corpus ranking.
+## Data and attribution
+The Turkish definitions are fetched from `https://sozluk.gov.tr/gts?ara={word}`. TDK is the source for the Turkish senses and examples. English equivalents are translations prepared for this learning list, not official TDK translations. The TDK endpoint requires an internet connection and may be unavailable temporarily.
+
+The list is a practical learner-focused selection of common words, not a statistically verified corpus-frequency ranking.
 
 ## Run locally
-Open `index.html` in a browser.
+Open `index.html` in a browser while connected to the internet. The index search works locally; word pages contact the TDK endpoint to retrieve definitions.
 
 ## GitHub Pages
-The included workflow deploys the site from the `main` branch whenever changes are pushed. In the repository, set **Settings → Pages → Build and deployment → Source** to **GitHub Actions** if it is not already selected.
+The workflow deploys the static site from `main`. If needed, select **Settings → Pages → Build and deployment → Source → GitHub Actions**.
 
 Repository: https://github.com/zxzchocolate/competition-meb-tr-dictionary
