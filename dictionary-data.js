@@ -118,7 +118,7 @@ window.TR_EN_DATABASE = {
   "su": {
     "number": 24,
     "partOfSpeech": "İsim",
-    "definition": "Hidrojen ve oksijenden oluşan, renksiz, kokusuz ve tatsız sıv."
+    "definition": "Hidrojen ve oksijenden oluşan, renksiz, kokusuz ve tatsız sıvı."
   },
   "yemek": {
     "number": 25,
