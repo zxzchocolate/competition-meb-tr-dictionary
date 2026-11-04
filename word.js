@@ -14,4 +14,5 @@
     status.textContent = "Loaded from the local dictionary database · works offline";
   } else if (status) status.textContent = "This word is not in the local dictionary database yet.";
   const overlay = document.createElement("script"); overlay.src = "../competition-overlay.js"; document.body.append(overlay);
+  const ar = document.createElement("script"); ar.src = "../ar-visualizer.js"; document.body.append(ar);
 })();
