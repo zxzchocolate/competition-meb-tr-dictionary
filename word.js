@@ -1,1 +1,27 @@
-const root=document.querySelector("[data-word]");if(root){const terms=(root.dataset.word||"").split("|").filter(Boolean);const list=document.getElementById("definitions");const status=document.getElementById("tdk-status");const source=document.getElementById("tdk-source");const title=root.dataset.title||terms.join(" / ");const endpoint="https://sozluk.gov.tr/gts?ara=";source.href=endpoint+encodeURIComponent(terms[0]||title);const clean=s=>String(s??"").replace(/<[^>]*>/g," ").replace(/&nbsp;/g," ").replace(/&amp;/g,"&").replace(/\s+/g," ").trim();const escapeHtml=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));async function load(){try{const responses=await Promise.all(terms.map(async term=>{const res=await fetch(endpoint+encodeURIComponent(term),{headers:{Accept:"application/json"}});if(!res.ok)throw new Error("TDK returned "+res.status);return res.json()}));const records=responses.flatMap(x=>Array.isArray(x)?x:[]);const unique=new Map();records.forEach(record=>{const key=(record.madde||"").toLocaleLowerCase("tr-TR");if(!key||unique.has(key))return;unique.set(key,record)});const senses=[];for(const record of unique.values()){(record.anlamlarListe||[]).forEach(item=>{if(item.anlam)senses.push({text:clean(item.anlam),pos:(item.ozelliklerListe||[]).map(x=>x.tam_adi).filter(Boolean).join(", "),examples:(item.orneklerListe||[]).map(x=>({text:clean(x.ornek),author:x.yazar?.[0]?.tam_adi||""})).filter(x=>x.text)})})}if(!senses.length){status.textContent="No matching headword was returned by TDK. Use the official entry link to check spelling or related forms.";return}list.innerHTML=senses.map((s,i)=>'<li class="definition"><span class="sense-number">'+String(i+1).padStart(2,"0")+'</span><div>'+(s.pos?'<span class="pos">'+escapeHtml(s.pos)+'</span>':'')+'<div class="sense-text">'+escapeHtml(s.text)+'</div>'+(s.examples[0]?'<p class="example">“'+escapeHtml(s.examples[0].text)+'”'+(s.examples[0].author?' <span>— '+escapeHtml(s.examples[0].author)+'</span>':'')+'</p>':'')+'</div></li>').join("");status.textContent="Definitions retrieved from the Turkish Language Association (TDK)";}catch(error){status.textContent="TDK definitions could not be loaded in this browser. Open the official entry to view the source directly.";list.innerHTML='<li class="notice">The official dictionary service may be temporarily unavailable or block this connection.</li>'}}load();}
+(() => {
+  const page = document.querySelector("[data-slug]");
+  if (!page) return;
+  const entry = window.TR_EN_DATABASE && window.TR_EN_DATABASE[page.dataset.slug];
+  const list = document.getElementById("definitions");
+  const status = document.getElementById("tdk-status");
+  if (!entry || !list || !status) {
+    if (status) status.textContent = "This word is not in the local dictionary database yet.";
+    return;
+  }
+  const item = document.createElement("li");
+  item.className = "definition";
+  const number = document.createElement("span");
+  number.className = "sense-number";
+  number.textContent = "01";
+  const body = document.createElement("div");
+  const pos = document.createElement("span");
+  pos.className = "pos";
+  pos.textContent = entry.partOfSpeech;
+  const meaning = document.createElement("div");
+  meaning.className = "sense-text";
+  meaning.textContent = entry.definition;
+  body.append(pos, meaning);
+  item.append(number, body);
+  list.replaceChildren(item);
+  status.textContent = "Loaded from the local dictionary database · works offline";
+})();
